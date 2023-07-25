@@ -15,7 +15,7 @@ public class Main {
         userService.saveUser("name1", "lastName1", (byte) 10);
         userService.saveUser("name2", "lastName2", (byte) 20);
         userService.saveUser("name3", "lastName3", (byte) 30);
-        userService.removeUserById(1);
+        userService.removeUserById(6);
         userService.saveUser("name4", "lastName4", (byte) 40);
         userService.saveUser("name5", "lastName5", (byte) 50);
         userService.saveUser("name6", "lastName6", (byte) 60);
