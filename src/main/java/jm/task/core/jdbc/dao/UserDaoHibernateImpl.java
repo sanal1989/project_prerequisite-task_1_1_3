@@ -23,11 +23,10 @@ public class UserDaoHibernateImpl implements UserDao {
     public void createUsersTable() {
         try (Session session = sessionFactory.openSession()){
             Transaction transaction = session.beginTransaction();
-            NativeQuery<Object> query = session.createSQLQuery("CREATE TABLE Users(id BIGINT PRIMARY KEY AUTO_INCREMENT," +
+            session.createSQLQuery("CREATE TABLE Users(id BIGINT PRIMARY KEY AUTO_INCREMENT," +
                     "name VARCHAR(255)," +
                     "last_name VARCHAR(255)," +
-                    "age INT);");
-            query.executeUpdate();
+                    "age INT);").executeUpdate();
             transaction.commit();
         }catch (PersistenceException e){
             System.out.println(e);
@@ -38,8 +37,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void dropUsersTable() {
         try (Session session = sessionFactory.openSession()){
             Transaction transaction = session.beginTransaction();
-            NativeQuery<Object> query = session.createSQLQuery("DROP TABLE Users;");
-            query.executeUpdate();
+            session.createSQLQuery("DROP TABLE Users;").executeUpdate();
             transaction.commit();
         }catch (PersistenceException e){
             System.out.println(e);
@@ -92,8 +90,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void cleanUsersTable() {
         try (Session session = sessionFactory.openSession()){
             Transaction transaction = session.beginTransaction();
-            NativeQuery<User> query = session.createSQLQuery("TRUNCATE TABLE Users;");
-            query.executeUpdate();
+            session.createSQLQuery("TRUNCATE TABLE Users;").executeUpdate();
             transaction.commit();
         }
     }
